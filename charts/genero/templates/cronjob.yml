@@ -50,7 +50,7 @@ spec:
             {{- end }}
         spec:
           serviceAccountName: {{ include "name" $ }}
-          restartPolicy: {{ if (coalesce $cj.restart $v.restart) }}{{ (coalesce $cj.restart $v.restart) }}{{ else }}"OnFailure"{{ end }}
+          restartPolicy: {{ if (coalesce $cj.restart $v.restart) }}{{ (coalesce $cj.restart $v.restart) }}{{ else }}"Never"{{ end }}
           {{- if (coalesce $cj.priority $v.priority) }}
           priorityClassName: {{ (coalesce $cj.priority $v.priority) }}
           {{- end }}
