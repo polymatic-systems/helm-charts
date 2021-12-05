@@ -25,6 +25,7 @@ volumes:
 - name:
   path:
   file: 
+  perpetual: 'enable' ('enable', 'disable')
   data:
 ```
 
@@ -49,6 +50,7 @@ volumes: <- this set up is for mounting file volumes
 - name: an arbitrary name
   path: the directory path to mount the volume
   file: if the volume is a file, put the file name here
+  perpetual: whether to retain the pvc if the release is uninstalled
   data:
     file.name: |
       placing a yaml multiline string here will create a secret instead of a volume and mount it as a file

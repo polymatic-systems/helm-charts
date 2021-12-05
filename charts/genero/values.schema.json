@@ -355,7 +355,8 @@
             "type": "string"
           },
           "perpetual": {
-            "type": "string"
+            "type": "string",
+            "enum": ["enable", "disable"]
           },
           "file": {
             "type": "string"
