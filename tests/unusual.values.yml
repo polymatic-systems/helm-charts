@@ -19,6 +19,12 @@ volumes:
   data:
     .env: |
       SERVER_PORT: 3000
+- name: data
+  path: /data
+  perpetual: "disable"
+  pvc:
+    class: pg1
+    size: 10Gi
 
 variables:
 - name: config

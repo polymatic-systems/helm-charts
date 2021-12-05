@@ -16,7 +16,9 @@ metadata:
   name: {{ include "name" $ }}-{{ .name }}
   namespace: {{ include "ns" $ }}
   annotations:
+    {{- if eq (.perpetual | default "enable") "enable" }}
     "helm.sh/resource-policy": keep
+    {{- end }}
 spec:
   {{- if .pvc.class }}
   storageClassName: {{ .pvc.class }}

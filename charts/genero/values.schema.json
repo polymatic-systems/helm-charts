@@ -354,6 +354,9 @@
           "path": {
             "type": "string"
           },
+          "perpetual": {
+            "type": "string"
+          },
           "file": {
             "type": "string"
           },
