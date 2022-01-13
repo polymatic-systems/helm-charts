@@ -103,8 +103,8 @@ spec:
             cpu: {{ dig "cpu" "request" "100m" . }}
             memory: {{ dig "memory" "request" "128Mi" . }}
           limits:
-            cpu: {{ dig "cpu" "request" "1000m" . }}
-            memory: {{ dig "memory" "request" "1Gi" . }}
+            cpu: {{ dig "cpu" "limit" "1000m" . }}
+            memory: {{ dig "memory" "limit" "1Gi" . }}
         securityContext:
         {{- if .root }}
           runAsUser: 0
