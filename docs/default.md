@@ -12,6 +12,7 @@ default:
   image:
   slug:
   env: production
+  namespaced: true
   issuer:
     production: production
     staging: staging
@@ -34,6 +35,7 @@ default:
   image: the default container image to use
   slug: an arbitrary string prefixed to the `name` for review environments. if set, will set the certificate issuer to staging
   env: sets the default ingressClassName, 'production' -> .default.ingress.external
+  namespaced: 'true' creates namespaced Role/RoleBindings, 'false' creates ClusterRole,ClusterRoleBindings
   issuer:
     production: the name of your production cert-manager Issuer
     staging: the name of your staging cert-manager Issuer

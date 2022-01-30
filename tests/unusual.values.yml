@@ -8,9 +8,25 @@ default:
   slug: 'yoyo'
   env: staging
   domain: example.com
+  namespaced: false
 
 # name: use default value
 # version: use default value
+
+rbac:
+- apiGroups:
+  - ""
+  - "extensions"
+  - "apps"
+  resources:
+  - "endpoints"
+  - "pods"
+  - "services"
+  - "namespaces"
+  verbs:
+  - "get"
+  - "list"
+  - "watch"
 
 volumes:
 - name: cv

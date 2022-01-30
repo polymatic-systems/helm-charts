@@ -116,3 +116,18 @@ ingress:
   cert: "a-differenct-cert-secret"
   urls:
     - extra.test.site
+
+rbac:
+- apiGroups:
+  - ""
+  - "extensions"
+  - "apps"
+  resources:
+  - "endpoints"
+  - "pods"
+  - "services"
+  - "namespaces"
+  verbs:
+  - "get"
+  - "list"
+  - "watch"

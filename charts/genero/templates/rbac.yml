@@ -1,4 +1,27 @@
 {{- if .Values.rbac }}
+{{- if eq (.Values.default.namespaced | toString) "false" }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "name" $ }}
+  namespace: {{ include "ns" $ }}
+rules:
+{{ toYaml .Values.rbac }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "name" $ }}
+  namespace: {{ include "ns" $ }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "name" $ }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "name" $ }}
+  namespace: {{ include "ns" $ }}
+{{- else }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -20,4 +43,5 @@ subjects:
 - kind: ServiceAccount
   name: {{ include "name" $ }}
   namespace: {{ include "ns" $ }}
+{{- end }}
 {{- end }}
