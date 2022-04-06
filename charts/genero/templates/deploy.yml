@@ -10,7 +10,7 @@ metadata:
   namespace: {{ include "ns" $ }}
   labels:
     app: {{ include "name" $ }}
-    version: {{ .Values.default.version | quote }}
+    version: {{ include "version" $ }}
 spec:
   selector:
     matchLabels:
@@ -53,6 +53,7 @@ spec:
           {{- toYaml .Values.annotations | nindent 8 }}
         {{- end }}
     spec:
+      shareProcessNamespace: {{ ternary "true" "false" (.Values.share | default false) }}
       terminationGracePeriodSeconds: 85
       serviceAccountName: {{ include "name" $ }}
       restartPolicy: {{ .Values.restart | default "Always" }}

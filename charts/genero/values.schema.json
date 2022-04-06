@@ -15,10 +15,12 @@
       ],
       "properties": {
         "name": {
-          "type": ["number", "string"]
+          "type": ["number", "string"],
+          "pattern": "[a-zA-Z0-9-]+"
         },
         "version": {
-          "type": ["number", "string"]
+          "type": ["number", "string"],
+          "pattern": "[a-zA-Z0-9-]+"
         },
         "image": {
           "type": "string"
@@ -81,6 +83,9 @@
     },
     "restart": {
       "type": "string"
+    },
+    "share": {
+      "type": "boolean"
     },
     "nodes": {
       "type": "object",

@@ -12,7 +12,6 @@ containers:
   command:
   - ...
   policy: 'Always' ('Always', 'Never', 'IfNotPresent')
-  restart: 'Always' ('Always', 'Never', 'OnFailure')
   ports:
   - containerPort: 80
   cpu:
@@ -43,7 +42,6 @@ containers: an array of containers to launch
   command: an array of commands to run in the container's shell instead of it's CMD
   - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#container-v1-core
   policy: the image pull policy
-  restart: the restart policy to use for if the container exits
   ports: what ports on the container to expose
   - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#containerport-v1-core
   cpu:
