@@ -49,6 +49,7 @@ spec:
               {{- toYaml (coalesce $cj.annotations $v.annotations) | nindent 12 }}
             {{- end }}
         spec:
+          shareProcessNamespace: {{ ternary "true" "false" ($v.share | default false) }}
           serviceAccountName: {{ include "name" $ }}
           restartPolicy: {{ if (coalesce $cj.restart $v.restart) }}{{ (coalesce $cj.restart $v.restart) }}{{ else }}"Never"{{ end }}
           {{- if (coalesce $cj.priority $v.priority) }}
