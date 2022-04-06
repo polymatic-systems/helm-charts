@@ -218,6 +218,10 @@ spec:
           - configMapRef:
               name: {{ include "name" $ }}-{{ .name }}
               optional: false
+            {{- else if eq (.store | default "") "external" }}
+          - secretRef:
+              name: {{ .name }}
+              optional: false
             {{- else }}
           - secretRef:
               name: {{ include "name" $ }}-{{ .name }}
