@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   genero:
   - apiVersion: v2
+    appVersion: v1.3.1
+    created: "2022-04-06T02:49:50.186763684Z"
+    description: Genero, a generic best practice ci/cd helm chart
+    digest: a2d63bb7537fc8c523ae44df82ea878ea154de1a0e055f2489f648d7b0b81977
+    home: https://polymatic.systems
+    keywords:
+    - generic best practice ci/cd helm chart
+    maintainers:
+    - email: eric.fossas@polymatic.systems
+      name: eric fossas
+    name: genero
+    sources:
+    - https://github.com/polymatic-systems/helm-charts
+    urls:
+    - https://github.com/polymatic-systems/helm-charts/releases/download/genero-v1.3.1/genero-v1.3.1.tgz
+    version: v1.3.1
+  - apiVersion: v2
     appVersion: v1.3.0
     created: "2022-01-30T16:12:50.990007515Z"
     description: Genero, a generic best practice ci/cd helm chart
@@ -137,4 +154,4 @@ entries:
     urls:
     - https://github.com/polymatic-systems/helm-charts/releases/download/genero-v1.0.0/genero-v1.0.0.tgz
     version: v1.0.0
-generated: "2022-01-30T16:12:50.990062518Z"
+generated: "2022-04-06T02:49:50.186911386Z"
