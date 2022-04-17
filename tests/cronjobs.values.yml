@@ -6,7 +6,6 @@ default:
   version: "2020"
   image: "some.registry.example.com/helmspace/helmet:2020"
   slug: ''
-  env: review
   domain: example.com
 
 name: helmet

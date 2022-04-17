@@ -1,12 +1,11 @@
 
-# this file is intended to to test what defaults are created when very little is defined
+# this file is intended to test what defaults are created when very little is defined
 
 default:
   name: "helmet-default"
   version: "master"
   image: "some.registry.test.site/helmspace/helmet-default:master"
   slug: ''
-  env: staging
   domain: test.site
 
 volumes:

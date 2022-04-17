@@ -1,19 +1,30 @@
 
 # this file is intended to to test as much deployment functionality as possible
 
+pipe:
+  single: true
+  anything:
+  - one
+  - two
+
 default:
   name: "helmet-deploy"
   version: "2020-01-01-01"
   image: "some.registry.example.com/helmspace/helmet-deploy:2020-01-01-01"
   slug: ''
-  env: production
   domain: example.com
   issuer:
     production: production
     staging: staging
   ingress:
-    external: external
-    internal: internal
+    external: 
+      name: external
+      annotations:
+        polymatic.systems/ingress.class: external
+    internal: 
+      name: internal
+      annotations:
+        polymatic.systems/ingress.class: internal
   registries:
   - registry-one
   - registry-two
@@ -95,7 +106,7 @@ hpa:
   cpu: 60
   memory: 90
 
-conceal: true
+conceal: false
 
 ingress:
 - name: public

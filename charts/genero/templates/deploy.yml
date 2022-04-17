@@ -10,7 +10,7 @@ metadata:
   namespace: {{ include "ns" $ }}
   labels:
     app: {{ include "name" $ }}
-    version: {{ include "version" $ }}
+    version: {{ include "version" $ | quote }}
 spec:
   selector:
     matchLabels:
@@ -20,11 +20,11 @@ spec:
     type: {{ dig "strategy" "RollingUpdate" $deploy }}
     {{- if not (dig "strategy" "" $deploy) }}
     rollingUpdate:
-      maxSurge: 10%
+      maxSurge: 20%
       maxUnavailable: 0
     {{- else if eq .Values.deploy.strategy "RollingUpdate" }}
     rollingUpdate:
-      maxSurge: 10%
+      maxSurge: 20%
       maxUnavailable: 0
     {{- end }}
   template:

@@ -1,13 +1,16 @@
 
 default:
   slug: ''
-  env: production
   issuer:
     production: production
     staging: staging
   ingress:
-    external: external
-    internal: internal
+    external: 
+      name: external
+      annotations: {}
+    internal: 
+      name: internal
+      annotations: {}
   add:
     logs: {}
     metrics: {}
