@@ -11,7 +11,7 @@ metadata:
   name: {{ include "name" $ }}-{{ $cj.name }}
   namespace: {{ include "ns" $ }}
   labels:
-    version: {{ $v.default.version | quote }}
+    version: {{ include "version" $ | quote }}
 spec:
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 1

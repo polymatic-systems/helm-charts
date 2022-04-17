@@ -17,6 +17,7 @@ add:
   logs:
   metrics:
   mesh:
+pipe:
 ```
 
 ```yaml
@@ -33,4 +34,5 @@ add:
   logs: adds logs annotations if defined in default section
   metrics: adds metrics annotations if defined in default section
   mesh: adds service mesh annotations if defined in default section
+pipe: this can host anything you want, it is not checked by validation, it is for custom values used outside this chart
 ```

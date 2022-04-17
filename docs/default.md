@@ -11,14 +11,17 @@ default:
   version:
   image:
   slug:
-  env: production
   namespaced: true
   issuer:
     production: production
     staging: staging
   ingress:
-    external: external
-    internal: internal
+    external:
+      name: external
+      annotations:
+    internal: 
+      name: internal
+      annotations:
   registries:
   add:
     logs:
@@ -34,14 +37,17 @@ default:
   version: your app version, set as a deployment label
   image: the default container image to use
   slug: an arbitrary string prefixed to the `name` for review environments. if set, will set the certificate issuer to staging
-  env: sets the default ingressClassName, 'production' -> .default.ingress.external
   namespaced: 'true' creates namespaced Role/RoleBindings, 'false' creates ClusterRole,ClusterRoleBindings
   issuer:
     production: the name of your production cert-manager Issuer
     staging: the name of your staging cert-manager Issuer
   ingress:
-    external: the ingressClassName of your public ingress controller
-    internal: the ingressClassName of your private ingress controller
+    external: 
+      name: the ingressClassName of your public ingress controller
+      annotations: annotations that will be applied to all ingresses marked "external"
+    internal:
+      name: the ingressClassName of your private ingress controller
+      annotations: annotations that will be applied to all ingresses marked "internal"
   registries: an array of registry secret names to add to deployments/cronjobs
   add: hosts convenient short keys for adding annotations
     logs: a map of keys to annotations

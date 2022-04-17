@@ -1,7 +1,5 @@
 
-{{- $version := .Values.default.version -}}
 {{- $slug := .Values.default.slug  -}}
-{{- $env := .Values.default.env  -}}
 
 ###########################################################################
 
@@ -12,21 +10,19 @@ The application has been deployed in Maintenance Mode!
 
 Name: {{ include "name" $ }}
 Namespace: {{ include "ns" $ }}
-Version: {{ .Values.version | default $version }}
+Version: {{ include "version" $ }}
 
 Chart Version: {{ .Chart.Version }}
 
 Endpoints:
 {{- if .Values.ingress }}
 {{- range .Values.ingress }}
-{{- if (hasKey . "internal") }}
-  {{- if eq .internal true }}
-  Private:
+{{- if (hasKey . "external") }}
+  {{- if eq .external true }}
+  Public:
   {{- else }}
-  Public:
+  Private:
   {{- end }}
-{{- else if eq $env "production" }}
-  Public:
 {{- else }}
   Private:
 {{- end }}

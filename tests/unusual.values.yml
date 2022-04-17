@@ -6,12 +6,8 @@ default:
   version: "2"
   image: "some.registry.example.com/helmspace/helmet:2"
   slug: 'yoyo'
-  env: staging
   domain: example.com
   namespaced: false
-
-# name: use default value
-# version: use default value
 
 rbac:
 - apiGroups:
@@ -67,8 +63,8 @@ containers:
       - '1'
     path: /health
     port: 5000
-  disableRoot: true
-  enablePrivilege: true
+  root: true
+  privileged: true
 
 annotations:
   random: "value"
@@ -82,6 +78,7 @@ metrics: true
 strategy: Recreate
 logs: json
 anchor: true
+conceal: true
 
 ingress:
 - name: main

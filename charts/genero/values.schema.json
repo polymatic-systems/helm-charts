@@ -6,6 +6,9 @@
     "default"
   ],
   "properties": {
+    "pipe": {
+      "type": "object"
+    },
     "default": {
       "type": "object",
       "required": [
@@ -28,9 +31,6 @@
         "slug": {
           "type": ["number", "string"]
         },
-        "env": {
-          "type": "string"
-        },
         "issuer": {
           "type": "object",
           "properties": {
@@ -46,10 +46,26 @@
           "type": "object",
           "properties": {
             "external": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "annotations": {
+                  "type": "object"
+                }
+              }
             },
             "internal": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "annotations": {
+                  "type": "object"
+                }
+              }
             }
           }
         },

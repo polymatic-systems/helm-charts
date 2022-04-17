@@ -7,13 +7,21 @@ metadata:
   name: {{ include "name" $ }}-{{ .name }}
   namespace: {{ include "ns" $ }}
   annotations:
-    polymatic.systems/ingress.class: {{ if (hasKey . "internal") }}{{ if eq .internal true }}{{ $d.ingress.internal }}{{ else }}{{ $d.ingress.external }}{{ end }}{{ else if eq ($d.env | default "production") "production" }}{{ $d.ingress.external }}{{ else }}{{ $d.ingress.internal }}{{ end }}
     nginx.org/websocket-services: {{ include "name" $ }}
+    {{ if (hasKey . "external") }}
+      {{ if eq .external true }}
+        {{ toYaml $d.ingress.external.annotations | nindent 4 }}
+      {{ else }}
+        {{ toYaml $d.ingress.internal.annotations | nindent 4 }}
+      {{ end }}
+    {{ else }}
+      {{ toYaml $d.ingress.internal.annotations | nindent 4 }}
+    {{ end }}
     {{- if .annotations }}
       {{- toYaml .annotations | nindent 4 }}
     {{- end }}
 spec:
-  ingressClassName: {{ if (hasKey . "internal") }}{{ if eq .internal true }}{{ $d.ingress.internal }}{{ else }}{{ $d.ingress.external }}{{ end }}{{ else if eq ($d.env | default "production") "production" }}{{ $d.ingress.external }}{{ else }}{{ $d.ingress.internal }}{{ end }}
+  ingressClassName: {{ if (hasKey . "external") }}{{ if eq .external true }}{{ $d.ingress.external.name }}{{ else }}{{ $d.ingress.internal.name }}{{ end }}{{ else }}{{ $d.ingress.internal.name }}{{ end }}
   rules:
   {{- $port := .port  -}}
   {{- $path := .path  -}}
