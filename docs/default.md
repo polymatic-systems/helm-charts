@@ -16,17 +16,14 @@ default:
     production: production
     staging: staging
   ingress:
-    external:
-      name: external
-      annotations:
-    internal: 
-      name: internal
-      annotations:
+    external: external
+    internal: internal
   registries:
   add:
     logs:
     metrics:
     mesh:
+    dns:
 ```
 
 ```yaml
@@ -42,15 +39,12 @@ default:
     production: the name of your production cert-manager Issuer
     staging: the name of your staging cert-manager Issuer
   ingress:
-    external: 
-      name: the ingressClassName of your public ingress controller
-      annotations: annotations that will be applied to all ingresses marked "external"
-    internal:
-      name: the ingressClassName of your private ingress controller
-      annotations: annotations that will be applied to all ingresses marked "internal"
+    external: the ingressClassName of your public ingress controller
+    internal: the ingressClassName of your private ingress controller
   registries: an array of registry secret names to add to deployments/cronjobs
   add: hosts convenient short keys for adding annotations
-    logs: a map of keys to annotations
-    metrics: a map of keys to annotations
-    mesh: a map of keys to annotations
+    logs: a map of keys to annotations used for logs on deployment
+    metrics: a map of keys to annotations used for metrics on deployment
+    mesh: a map of keys to annotations used for service mesh on deployment
+    dns: a map of keys to annotations used for dns on ingress
 ```
