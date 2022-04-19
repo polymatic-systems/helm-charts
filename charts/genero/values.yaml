@@ -7,9 +7,6 @@ default:
   ingress:
     external: external
     internal: internal
-  dns:
-    ingress: {}
-    global: {}
   add:
     logs: {}
     metrics: {}
