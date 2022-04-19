@@ -1,4 +1,5 @@
 {{- $d := .Values.default }}
+{{- $add := .Values.add | default dict }}
 {{- if and .Values.ingress (not .Values.conceal) }}
 {{- range .Values.ingress }}
 apiVersion: networking.k8s.io/v1
@@ -8,20 +9,16 @@ metadata:
   namespace: {{ include "ns" $ }}
   annotations:
     nginx.org/websocket-services: {{ include "name" $ }}
-    {{ if (hasKey . "external") }}
-      {{ if eq .external true }}
-        {{ toYaml $d.ingress.external.annotations | nindent 4 }}
-      {{ else }}
-        {{ toYaml $d.ingress.internal.annotations | nindent 4 }}
-      {{ end }}
-    {{ else }}
-      {{ toYaml $d.ingress.internal.annotations | nindent 4 }}
-    {{ end }}
+    {{- if $add.dns }}
+      {{- range $ak, $av := (index $d.add.dns $add.dns) }}
+    {{ $ak }}: {{ $av | quote }}
+      {{- end -}}
+    {{- end }}
     {{- if .annotations }}
       {{- toYaml .annotations | nindent 4 }}
     {{- end }}
 spec:
-  ingressClassName: {{ if (hasKey . "external") }}{{ if eq .external true }}{{ $d.ingress.external.name }}{{ else }}{{ $d.ingress.internal.name }}{{ end }}{{ else }}{{ $d.ingress.internal.name }}{{ end }}
+  ingressClassName: {{ if (hasKey . "external") }}{{ if eq .external true }}{{ $d.ingress.external }}{{ else }}{{ $d.ingress.internal }}{{ end }}{{ else }}{{ $d.ingress.internal }}{{ end }}
   rules:
   {{- $port := .port  -}}
   {{- $path := .path  -}}

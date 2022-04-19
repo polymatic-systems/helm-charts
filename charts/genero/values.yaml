@@ -5,13 +5,13 @@ default:
     production: production
     staging: staging
   ingress:
-    external: 
-      name: external
-      annotations: {}
-    internal: 
-      name: internal
-      annotations: {}
+    external: external
+    internal: internal
+  dns:
+    ingress: {}
+    global: {}
   add:
     logs: {}
     metrics: {}
     mesh: {}
+    dns: {}

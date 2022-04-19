@@ -38,5 +38,7 @@ nodes:
 
 ingress:
 - name: app
+  annotations:
+    gateway: enabled
   urls:
     - deploy.test.site

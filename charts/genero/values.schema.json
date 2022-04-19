@@ -46,26 +46,10 @@
           "type": "object",
           "properties": {
             "external": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "annotations": {
-                  "type": "object"
-                }
-              }
+              "type": "string"
             },
             "internal": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "annotations": {
-                  "type": "object"
-                }
-              }
+              "type": "string"
             }
           }
         },
@@ -85,6 +69,9 @@
               "type": ["object", "null"]
             },
             "mesh": {
+              "type": ["object", "null"]
+            },
+            "dns": {
               "type": ["object", "null"]
             }
           }
@@ -491,7 +478,7 @@
           "urls": {
             "type": "array"
           },
-          "internal": {
+          "external": {
             "type": "boolean"
           },
           "cert": {
