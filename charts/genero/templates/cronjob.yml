@@ -164,6 +164,11 @@ spec:
               runAsUser: 0
             {{- end }}
               privileged: {{ if $cntr.privileged }}{{ "true" }}{{ else }}{{ "false "}}{{ end }}
+            env:
+              - name: DD_AGENT_HOST
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.hostIP
             {{- if $v.variables }}
             envFrom:
               {{- range $v.variables }}
