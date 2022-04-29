@@ -6,7 +6,6 @@ default:
   version: "2"
   image: "some.registry.example.com/helmspace/helmet:2"
   slug: 'yoyo'
-  domain: example.com
   namespaced: false
 
 rbac:

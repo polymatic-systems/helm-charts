@@ -6,7 +6,6 @@ default:
   version: "master"
   image: "some.registry.test.site/helmspace/helmet-default:master"
   slug: ''
-  domain: test.site
 
 volumes:
 - name: cv
@@ -38,5 +37,7 @@ nodes:
 
 ingress:
 - name: app
+  annotations:
+    gateway: enabled
   urls:
     - deploy.test.site

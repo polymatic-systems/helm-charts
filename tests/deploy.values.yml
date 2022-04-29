@@ -12,19 +12,12 @@ default:
   version: "2020-01-01-01"
   image: "some.registry.example.com/helmspace/helmet-deploy:2020-01-01-01"
   slug: ''
-  domain: example.com
   issuer:
     production: production
     staging: staging
   ingress:
-    external: 
-      name: external
-      annotations:
-        polymatic.systems/ingress.class: external
-    internal: 
-      name: internal
-      annotations:
-        polymatic.systems/ingress.class: internal
+    external: external
+    internal: internal
   registries:
   - registry-one
   - registry-two
@@ -42,11 +35,19 @@ default:
         polymatic.systems/inject: enabled
       disable:
         polymatic.systems/inject: disabled
+    dns:
+      enable:
+        polymatic.systems/dns: enabled
+      disable:
+        polymatic.systems/dns: disabled
+      global:
+        polymatic.systems/global: failover
 
 add:
   logs: json
   metrics: enable
   mesh: disable
+  dns: enable
 
 volumes:
 - name: data
