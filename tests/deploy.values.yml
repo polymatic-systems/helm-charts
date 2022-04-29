@@ -12,7 +12,6 @@ default:
   version: "2020-01-01-01"
   image: "some.registry.example.com/helmspace/helmet-deploy:2020-01-01-01"
   slug: ''
-  domain: example.com
   issuer:
     production: production
     staging: staging

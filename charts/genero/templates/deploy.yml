@@ -111,6 +111,11 @@ spec:
           runAsUser: 0
         {{- end }}
           privileged: {{ ternary "true" "false" (.privileged | default false) }}
+        env:
+          - name: DD_AGENT_HOST
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
         {{- if $variables }}
         envFrom:
           {{- range $variables }}
@@ -211,6 +216,11 @@ spec:
           runAsUser: 0
         {{- end }}
           privileged: {{ ternary "true" "false" (.privileged | default false) }}
+        env:
+          - name: DD_AGENT_HOST
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
         {{- if or $variables }}
         envFrom:
           {{- range $variables }}
