@@ -5,12 +5,13 @@ If `cronjobs` field is set, then cronjobs will be deployed instead of a deployme
 
 Any of the "global" values can be overridden in each cronjob definition.
 
-The following values can be overwritten on the first container in each cronjob definition: `command`, `args`, `resources`.
+The following values can be overwritten on the first container in each cronjob definition: `entrypoint`, `command`, `resources`.
 
 ```yaml
 # default settings
 cronjobs:
-- schedule:
+- name:
+  schedule:
   concurrency: 'Allow' ('Allow', 'Forbid', 'Replace')
   suspend: false
   retries: 3
@@ -21,7 +22,8 @@ cronjobs:
 # explanations
 
 cronjobs:
-- schedule: the cron schedule for the job
+- name: the name of the cronjob
+  schedule: the cron schedule for the job
   concurrency: allow concurrent runs of the cronjob, forbid them, or force new jobs to replace old ones
   suspend: disable this cronjob, can be used for creating on-demand jobs
   retries: number of retries to attempt on failed jobs
