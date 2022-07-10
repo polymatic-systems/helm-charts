@@ -60,6 +60,10 @@ spec:
       {{- if .Values.priority }}
       priorityClassName: {{ .Values.priority }}
       {{- end }}
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "1"
       {{- if .Values.nodes }}
       affinity:
         nodeAffinity:
