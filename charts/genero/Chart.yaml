@@ -1,7 +1,7 @@
 apiVersion: v2
 name: genero
-version: v1.4.2
-appVersion: v1.4.2
+version: v1.4.3
+appVersion: v1.4.3
 description: Genero, a generic best practice ci/cd helm chart
 home: https://polymatic.systems
 keywords:
@@ -11,4 +11,6 @@ sources:
 maintainers:
   - name: eric fossas
     email: eric.fossas@polymatic.systems
+  - name: roberto contreras
+    email: roberto.contreras@polymatic.systems
 deprecated: false
