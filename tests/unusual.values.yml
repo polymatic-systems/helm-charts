@@ -69,7 +69,8 @@ annotations:
   random: "value"
 
 nodes:
-  network: 'private'
+  force: 
+    status: 'private'
 
 mesh: false
 registry: false
