@@ -10,6 +10,7 @@ annotations:
 priority: ('low', 'mid', 'high', 'core', 'database', 'critical')
 restart: Always ('Always', 'OnFailure', 'Never')
 share: false
+remote:
 nodes:
   prohibit:
   force:
@@ -27,6 +28,7 @@ annotations: additional deployment/cronjob annotations
 priority: the pod priority class
 restart: the restart policy for the pod
 share: whether containers in the pod should share a process namespace
+remote: key/value map of externalName services. CNAME will be NAME-KEY.NAMESPACE.svc.cluser.local -> VALUE
 nodes:
   prohibit: map of key/value node labels that pods should never run on
   force: map of key/value node labels that pods have to run on
