@@ -64,6 +64,10 @@ spec:
         options:
           - name: ndots
             value: "1"
+          - name: attempts
+            value: "3"
+          - name: timeout
+            value: "3"
       {{- if .Values.nodes }}
       affinity:
         nodeAffinity:

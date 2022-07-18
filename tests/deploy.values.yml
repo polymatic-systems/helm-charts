@@ -101,6 +101,10 @@ svc:
     port: 5050
     targetPort: 5050
 
+remote:
+  postgres: postgres.example.com
+  redis: redis.example.com
+
 hpa:
   min: 2
   max: 3
